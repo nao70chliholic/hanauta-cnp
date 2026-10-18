@@ -142,6 +142,7 @@ body.towa-sings .bubble{left:75%}
 .transport{display:flex;align-items:flex-start;justify-content:center;gap:26px;padding-top:2px}
 .tbtn,.pwrap{display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;width:76px}
 .tbtn{padding-top:13px}
+.tbtn .tlabel{margin-top:13px}
 .tlabel{font-size:.72rem;font-weight:700;color:var(--muted);white-space:nowrap}
 .tbtn:active .round{transform:scale(.94)}
 .round{transition:transform .1s;width:48px;height:48px;border-radius:50%;border:1px solid var(--chip-line);background:var(--chip);display:grid;place-items:center;cursor:pointer}
@@ -179,7 +180,7 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
 .about{padding-top:16px;font-size:.8rem;line-height:1.8;opacity:.8}
 .about p{margin:0 0 8px}
 
-@media (max-height:700px){.tbtn{padding-top:8px}.cat{height:64%}.brand p{display:none}.panel{gap:10px;padding:12px}.mood{height:38px}.play{width:64px;height:64px}}
+@media (max-height:700px){.tbtn{padding-top:8px}.tbtn .tlabel{margin-top:8px}.cat{height:64%}.brand p{display:none}.panel{gap:10px;padding:12px}.mood{height:38px}.play{width:64px;height:64px}}
 @media (prefers-reduced-motion:reduce){.cloud,.cat.rest img,.play.on::before{animation:none}.fx{display:none}.sky .layer,.hill,.cat,.cat img{transition:none}}
 </style>
 </head>
