@@ -1,8 +1,8 @@
 // セツナとトワのはなうた — offline cache
 // 更新したら VERSION を変えてください（古いキャッシュが入れ替わります）
-const VERSION = 'hanauta-v6';
+const VERSION = 'hanauta-v7';
 const CORE = ['./', 'index.html', 'manifest.webmanifest',
-  'icons/apple-touch-icon.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/favicon-32.png'];
+  'icons/apple-touch-icon.png', 'assets/visual.webp', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/favicon-32.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

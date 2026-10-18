@@ -15,7 +15,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <meta property="og:title" content="セツナとトワのはなうた">
 <meta property="og:description" content="刹那の気分を、永遠のはなうたに。">
-<meta property="og:image" content="icons/icon-512.png">
+<meta property="og:url" content="https://hanauta-cnp.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://hanauta-cnp.netlify.app/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="セツナとトワのはなうた">
+<meta name="twitter:description" content="刹那の気分を、永遠のはなうたに。">
+<meta name="twitter:image" content="https://hanauta-cnp.netlify.app/ogp.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
@@ -182,11 +190,30 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
 .about{padding-top:16px;font-size:.8rem;line-height:1.8;opacity:.8}
 .about p{margin:0 0 8px}
 
+/* ---------- splash ---------- */
+.splash{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#2A1E3E;overflow:hidden;cursor:pointer;
+  transition:opacity .7s ease,visibility .7s;padding:max(24px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.splash.hide{opacity:0;visibility:hidden}
+.sbg{position:absolute;inset:-40px;background:url(assets/visual.webp) center/cover;filter:blur(28px) brightness(.7) saturate(1.2);transform:scale(1.1)}
+.sinner{position:relative;width:100%;max-width:480px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;color:#fff}
+.sart{width:100%;height:auto;border-radius:26px;box-shadow:0 24px 60px rgba(10,4,20,.5);animation:sIn 1s cubic-bezier(.2,.8,.3,1) both}
+.sinner h1{margin:6px 0 0;font-family:var(--title);font-weight:400;font-size:clamp(1.6rem,7.4vw,2.1rem);letter-spacing:.04em;text-shadow:0 2px 18px rgba(20,6,30,.6);animation:sIn 1s .25s both}
+.sinner p{margin:0;font-family:var(--brush);font-size:clamp(.95rem,4.2vw,1.15rem);letter-spacing:.16em;opacity:.92;animation:sIn 1s .45s both}
+@keyframes sIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.about-art{width:100%;height:auto;border-radius:18px;margin-bottom:12px;display:block}
 @media (max-height:700px){#roll{height:40px}.tbtn{padding-top:8px}.tbtn .tlabel{margin-top:8px}.cat{height:64%}.brand p{display:none}.panel{gap:10px;padding:12px}.mood{height:38px}.play{width:64px;height:64px}}
-@media (prefers-reduced-motion:reduce){.cloud,.cat.rest img,.play.on::before{animation:none}.fx{display:none}.sky .layer,.hill,.cat,.cat img{transition:none}}
+@media (prefers-reduced-motion:reduce){.sart,.sinner h1,.sinner p{animation:none}.cloud,.cat.rest img,.play.on::before{animation:none}.fx{display:none}.sky .layer,.hill,.cat,.cat img{transition:none}}
 </style>
 </head>
 <body>
+<div class="splash" id="splash" role="img" aria-label="セツナとトワのはなうた　刹那の気分を、永遠のはなうたに。">
+  <div class="sbg"></div>
+  <div class="sinner">
+    <img class="sart" src="assets/visual.webp" alt="">
+    <h1>セツナとトワのはなうた</h1>
+    <p>刹那の気分を、永遠のはなうたに。</p>
+  </div>
+</div>
 <div class="sky" aria-hidden="true">
   <div class="layer day"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div></div>
   <div class="layer night"><div class="moon"></div></div>
@@ -247,9 +274,10 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
     <div class="set"><label for="backing">ギター伴奏</label><input type="checkbox" class="switch" id="backing" checked></div>
     <div class="set"><label for="singalong" style="width:auto;flex:1">いっしょに歌う<small style="display:block;font-weight:500;opacity:.7;font-size:.75rem">2回目から歌声をひかえめにします</small></label><input type="checkbox" class="switch" id="singalong"></div>
     <div class="about">
+      <img class="about-art" src="assets/visual.webp" alt="夕焼けと星空の下で歌うセツナとトワ" loading="lazy">
       <p>明るい気分は白猫のセツナが、静かな気分は黒猫のトワが歌います。その場で生まれた8小節のメロディを、くり返し歌ってくれます。覚えたら一緒に口ずさんでみてください。「べつの歌」を押すと、その歌とはお別れです。同じ鼻歌は二度と出ません。</p>
       <p>キャラクター：CryptoNinja Partners（CNP）のセツナ・トワ<br>CNPホルダーによる二次創作アプリです。CNP公式とは関係ありません。</p>
-      <p>v1.3.0</p>
+      <p>v1.4.0</p>
     </div>
   </div>
 </div>
@@ -589,6 +617,16 @@ function frame(t){
   requestAnimationFrame(frame);
 }
 newSong();song=null;updateMeta();requestAnimationFrame(frame);
+
+// ---------- splash ----------
+(function(){
+  const sp=$('splash');let done=false;
+  const hide=()=>{if(done)return;done=true;sp.classList.add('hide');setTimeout(()=>sp.remove(),800)};
+  sp.addEventListener('click',hide);
+  const img=sp.querySelector('.sart');
+  const go=()=>setTimeout(hide,reduce?900:2300);
+  if(img.complete)go();else{img.addEventListener('load',go);img.addEventListener('error',hide);setTimeout(hide,4500)}
+})();
 
 // ---------- PWA ----------
 if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
