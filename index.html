@@ -139,8 +139,12 @@ body.towa-sings .bubble{left:75%}
 .mood:active{transform:scale(.96)}
 .mood[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff;box-shadow:0 6px 16px color-mix(in srgb,var(--c) 40%,transparent)}
 
-.transport{display:flex;align-items:center;justify-content:center;gap:28px;padding-top:2px}
-.round{width:48px;height:48px;border-radius:50%;border:1px solid var(--chip-line);background:var(--chip);display:grid;place-items:center;cursor:pointer}
+.transport{display:flex;align-items:flex-start;justify-content:center;gap:26px;padding-top:2px}
+.tbtn,.pwrap{display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;padding:0;cursor:pointer;width:76px}
+.tbtn{padding-top:13px}
+.tlabel{font-size:.72rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.tbtn:active .round{transform:scale(.94)}
+.round{transition:transform .1s;width:48px;height:48px;border-radius:50%;border:1px solid var(--chip-line);background:var(--chip);display:grid;place-items:center;cursor:pointer}
 .round svg{width:20px;height:20px}
 .round:disabled{opacity:.35;cursor:default}
 .play{position:relative;width:74px;height:74px;border-radius:50%;border:none;background:var(--mood);color:#fff;display:grid;place-items:center;cursor:pointer;
@@ -175,7 +179,7 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
 .about{padding-top:16px;font-size:.8rem;line-height:1.8;opacity:.8}
 .about p{margin:0 0 8px}
 
-@media (max-height:700px){.cat{height:64%}.brand p{display:none}.panel{gap:10px;padding:12px}.mood{height:38px}.play{width:64px;height:64px}}
+@media (max-height:700px){.tbtn{padding-top:8px}.cat{height:64%}.brand p{display:none}.panel{gap:10px;padding:12px}.mood{height:38px}.play{width:64px;height:64px}}
 @media (prefers-reduced-motion:reduce){.cloud,.cat.rest img,.play.on::before{animation:none}.fx{display:none}.sky .layer,.hill,.cat,.cat img{transition:none}}
 </style>
 </head>
@@ -192,9 +196,6 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
       <h1>セツナとトワのはなうた</h1>
       <p>刹那の気分を、永遠のはなうたに。</p>
     </div>
-    <button class="icon-btn" id="openSettings" type="button" aria-label="設定">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
-    </button>
   </header>
   <div class="toast" id="install" hidden>
     <p>共有ボタン →「ホーム画面に追加」で、アプリとして使えます</p>
@@ -217,14 +218,16 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
     </div>
     <div class="groups" id="groups"></div>
     <div class="transport">
-      <button class="round" id="again" type="button" aria-label="別のメロディにする" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      <button class="tbtn" id="again" type="button">
+        <span class="round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></span>
+        <span class="tlabel">べつの歌</span>
       </button>
-      <button class="play" id="play" type="button" aria-label="歌う">
+      <div class="pwrap"><button class="play" id="play" type="button" aria-label="歌う">
         <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
-      </button>
-      <button class="round" id="openSettings2" type="button" aria-label="テンポと声の設定">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </button><span class="tlabel" id="playLabel">歌う</span></div>
+      <button class="tbtn" id="openSettings2" type="button">
+        <span class="round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+        <span class="tlabel">テンポ・声</span>
       </button>
     </div>
     <p class="credit">Characters: CryptoNinja Partners（CNP）· ホルダーによる二次創作</p>
@@ -241,7 +244,7 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
     <div class="about">
       <p>明るい気分は白猫のセツナが、静かな気分は黒猫のトワが歌います。メロディは毎回その場で作曲されるので、同じ鼻歌は二度と出ません。</p>
       <p>キャラクター：CryptoNinja Partners（CNP）のセツナ・トワ<br>CNPホルダーによる二次創作アプリです。CNP公式とは関係ありません。</p>
-      <p>v1.1.0</p>
+      <p>v1.1.1</p>
     </div>
   </div>
 </div>
@@ -318,7 +321,7 @@ $('pitch').oninput=()=>{const v=+$('pitch').value;$('pitchOut').textContent=(v>0
 
 function uiPlaying(on){
   $('play').classList.toggle('on',on);$('play').setAttribute('aria-label',on?'止める':'歌う');
-  $('playIcon').innerHTML=on?ICON_STOP:ICON_PLAY;$('again').disabled=!on;updateMeta();
+  $('playIcon').innerHTML=on?ICON_STOP:ICON_PLAY;$('playLabel').textContent=on?'止める':'歌う';updateMeta();
 }
 
 // ---------- song setup ----------
@@ -459,7 +462,8 @@ function restart(){stop();start()}
 
 
 $('play').onclick=()=>playing?stop():start();
-$('again').onclick=restart;
+$('again').onclick=()=>playing?restart():start();
+$('again').setAttribute('aria-label','べつのメロディで歌う');
 function updateMeta(){
   const t=Math.round(tempoVal());
   if(!playing||!song){$('nowSub').textContent=`再生ボタンで歌いはじめます · ♩${t}`;return}
@@ -471,7 +475,7 @@ function updateMeta(){
 const wrap=$('sheetWrap');
 function openSheet(){wrap.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>wrap.classList.add('open')));}
 function closeSheet(){wrap.classList.remove('open');setTimeout(()=>{wrap.hidden=true},300);}
-$('openSettings').onclick=openSheet;$('openSettings2').onclick=openSheet;$('closeSettings').onclick=closeSheet;
+$('openSettings2').onclick=openSheet;$('closeSettings').onclick=closeSheet;
 wrap.addEventListener('click',e=>{if(e.target===wrap)closeSheet()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!wrap.hidden)closeSheet()});
 
