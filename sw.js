@@ -1,6 +1,6 @@
 // セツナとトワのはなうた — offline cache
 // 更新したら VERSION を変えてください（古いキャッシュが入れ替わります）
-const VERSION = 'hanauta-v1';
+const VERSION = 'hanauta-v2';
 const CORE = ['./', 'index.html', 'manifest.webmanifest',
   'icons/apple-touch-icon.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/favicon-32.png'];
 
