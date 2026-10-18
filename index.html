@@ -557,7 +557,8 @@ function drawRoll(){
   let pos=-1;const now=ctx.currentTime;
   for(const sc of song.sched){if(sc.t0<=now){pos=sc.half*16+Math.min(16,(now-sc.t0)/sc.beat)}}
   const ids=song.phrases.flatMap(ph=>ph.flatMap(b=>b.notes.map(n=>n.idx))).filter(v=>v!=null);
-  const mn=Math.min(...ids)-.5,mx=Math.max(...ids)+.5;((bars,half)=>bars.forEach((bar,b)=>bar.notes.forEach(n=>{
+  const mn=Math.min(...ids)-.5,mx=Math.max(...ids)+.5;
+  song.phrases.forEach((bars,half)=>bars.forEach((bar,b)=>bar.notes.forEach(n=>{
     if(n.idx==null)return;
     const a=half*16+b*4+n.pos,x=padX+W*a/32,nw=Math.max(3,W*n.dur/32-2),y=padY+3+(H-6)*(1-(n.idx-mn)/(mx-mn));
     const played=pos>=a,active=pos>=a&&pos<a+n.dur;
