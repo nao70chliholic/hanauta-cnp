@@ -18,7 +18,7 @@
 <meta property="og:image" content="icons/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Yuji+Syuku&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
 <style>
 /* Layout: one-screen app. Full-bleed sky (sunset for Setsuna, night for Towa) behind
    a header, the stage where the two cats face each other, and a frosted control panel. */
@@ -26,9 +26,10 @@
   --ink:#2A1E2E; --muted:#7D6260; --glass:rgba(255,248,242,.80); --glass-line:rgba(255,255,255,.75);
   --chip:rgba(42,30,46,.06); --chip-line:rgba(42,30,46,.10); --outline:#1E1A24;
   --mood:#E57D12;
-  --display:"Dela Gothic One","Hiragino Kaku Gothic StdN",sans-serif;
+  --title:"Zen Antique Soft","Hiragino Mincho ProN","Yu Mincho",serif;
+  --display:"Zen Kaku Gothic New","Hiragino Kaku Gothic StdN",sans-serif;
   --brush:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;
-  --body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  --body:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;
   color-scheme:light;
 }
 body.night{
@@ -72,7 +73,7 @@ body.night .sky .night{opacity:1}
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
 .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-top:14px}
-.brand h1{margin:0;font-family:var(--display);font-weight:400;font-size:1.32rem;line-height:1.25;color:#fff;
+.brand h1{margin:0;font-family:var(--title);font-weight:400;font-size:1.45rem;line-height:1.25;color:#fff;
   letter-spacing:.02em;text-shadow:0 1px 0 rgba(30,20,40,.25),0 2px 14px rgba(60,20,40,.18);text-wrap:balance}
 .brand p{margin:2px 0 0;font-family:var(--brush);font-size:.88rem;letter-spacing:.12em;color:rgba(255,255,255,.88)}
 .icon-btn{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);
@@ -108,7 +109,7 @@ body.night .shadow{background:rgba(0,0,0,.3)}
 .shadow.s{left:10%}.shadow.t{right:10%}
 
 .bubble{position:absolute;top:6%;left:25%;transform:translateX(-50%);z-index:4;white-space:nowrap;
-  font-family:var(--display);font-size:clamp(1.25rem,5.6vw,1.6rem);color:#1E1A24;background:#fff;
+  font-family:var(--display);font-weight:900;font-size:clamp(1.25rem,5.6vw,1.6rem);color:#1E1A24;background:#fff;
   border:2.5px solid var(--outline);border-radius:999px;padding:3px 18px 5px;
   box-shadow:0 8px 24px rgba(40,10,40,.18);transition:left .55s cubic-bezier(.3,1.3,.5,1),transform .12s}
 .bubble::after{content:"";position:absolute;left:50%;bottom:-11px;width:14px;height:14px;background:#fff;
@@ -117,7 +118,7 @@ body.towa-sings .bubble{left:75%}
 .bubble.pop{transform:translateX(-50%) scale(1.08)}
 .fx{position:absolute;inset:0;z-index:3;pointer-events:none}
 .fx img,.fx span{position:absolute;animation:rise 2s ease-out forwards}
-.fx span{font-family:var(--display);font-size:1.3rem;color:#fff;-webkit-text-stroke:1.2px #1E1A24}
+.fx span{font-family:var(--display);font-weight:900;font-size:1.3rem;color:#fff;-webkit-text-stroke:1.2px #1E1A24}
 @keyframes rise{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),-120px) scale(1.1) rotate(var(--rot))}}
 
 /* ---------- panel ---------- */
@@ -245,7 +246,7 @@ body.night .sheet{background:#1C1840;color:#F3EFFF}
     <div class="about">
       <p>明るい気分は白猫のセツナが、静かな気分は黒猫のトワが歌います。メロディは毎回その場で作曲されるので、同じ鼻歌は二度と出ません。</p>
       <p>キャラクター：CryptoNinja Partners（CNP）のセツナ・トワ<br>CNPホルダーによる二次創作アプリです。CNP公式とは関係ありません。</p>
-      <p>v1.1.1</p>
+      <p>v1.2.0</p>
     </div>
   </div>
 </div>
